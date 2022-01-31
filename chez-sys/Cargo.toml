@@ -1,9 +1,18 @@
 [package]
 name = "chez-sys"
-links = "chez"
+description = "Rust bindings for embedding the Chez Scheme interpreter and compiler in Rust applications"
+repository = "https://github.com/amarmaduke/chez-rs"
 version = "0.1.0"
+license = "Apache-2.0"
+authors = ["Andrew Marmaduke <marmaduke.andrew@gmail.com>"]
+keywords = ["chez", "scheme", "ffi"]
+categories = ["external-ffi-bindings"]
+readme = "README.md"
+links = "chez"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "chez_sys"
+path = "src/lib.rs"
 
 [dependencies]

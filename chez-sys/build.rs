@@ -6,7 +6,7 @@ use std::env;
 fn main() {
     let cargo_manifest = env::var("CARGO_MANIFEST_DIR").unwrap();
     let chez_source_path = PathBuf::from(cargo_manifest).join("ChezScheme");
-    let cargo_output = env::var("OUT_DIR").unwrap();
+    let cargo_output = PathBuf::from(env::var("OUT_DIR").unwrap());
     Command::new("./configure")
         .current_dir(&chez_source_path)
         .arg("--disable-curses")
@@ -28,6 +28,15 @@ fn main() {
         .arg("libchez.a")
         .status()
         .expect("Failed to rename library.");
+    Command::new("mv")
+        .current_dir(&chez_kernel)
+        .arg("petite.boot")
+        .arg("scheme.boot")
+        .arg(&cargo_output)
+        .status()
+        .expect("Failed to move boot files");
+    println!("cargo:rustc-env=PETITE_BOOT_PATH={}", cargo_output.join("petite.boot").display());
+    println!("cargo:rustc-env=SCHEME_BOOT_PATH={}", cargo_output.join("scheme.boot").display());
     println!("cargo:rustc-link-search={}", chez_kernel.display());
     println!("cargo:rustc-link-lib=chez");
     println!("cargo:rustc-link-search={}", chez_lz4_lib.display());
