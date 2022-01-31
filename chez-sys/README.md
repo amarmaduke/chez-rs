@@ -4,8 +4,6 @@ Currently only supported 64 bit Linux with curses and x11 disabled.
 
 Note all header functions are implemented (some functional `#define`s are missing).
 
-The (current) build setup is dirty (builds inside the submodule).
-
 ## Boot files
 
 Boot files for the target OS are constructed and moved to Cargo's `OUT_DIR`.
