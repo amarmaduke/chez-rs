@@ -1,5 +1,7 @@
 
-include!("../bindings.rs");
+mod bindings;
+
+pub use bindings::*;
 
 
 #[cfg(test)]
