@@ -1,3 +1,0 @@
-[submodule "chez-sys/ChezScheme"]
-	path = chez-sys/ChezScheme
-	url = https://github.com/cisco/ChezScheme
