@@ -30,6 +30,7 @@ exclude = [
 name = "chez_sys"
 path = "src/lib.rs"
 
-
-
 [dependencies]
+
+[build-dependencies]
+pkg-config = "0.3.24"

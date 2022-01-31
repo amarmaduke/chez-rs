@@ -3,7 +3,15 @@ use std::path::PathBuf;
 use std::process::Command;
 use std::env;
 
-fn main() {
+use pkg_config;
+
+fn fallback_clone_repository() {
+    pkg_config::Config::new().statik(true).probe("uuid")
+        .map_err(|x| {
+            println!("cargo:warning=Static version of kernel library uuid must be installed");
+            x
+        }).unwrap();
+
     let cargo_output = PathBuf::from(env::var("OUT_DIR").unwrap());
     let chez_source_path = cargo_output.join("ChezScheme");
     Command::new("git")
@@ -55,4 +63,10 @@ fn main() {
     println!("cargo:rustc-link-lib=z");
     println!("cargo:rustc-link-lib=uuid");
     println!("cargo:include={}", chez_output.display());
+}
+
+fn main() {
+    // TODO: try to build a dynamic library from dev dependencies on system
+
+    fallback_clone_repository();
 }
