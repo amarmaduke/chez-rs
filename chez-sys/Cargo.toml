@@ -11,21 +11,6 @@ readme = "README.md"
 links = "chez"
 edition = "2021"
 
-exclude = [
-    "ChezScheme/boot/ta6nt/*",
-    "ChezScheme/boot/ta6osx/*",
-    "ChezScheme/boot/ta6le/*",
-    "ChezScheme/boot/a6nt/*",
-    "ChezScheme/boot/a6osx/*",
-    "ChezScheme/boot/ti3nt/*",
-    "ChezScheme/boot/ti3osx/*",
-    "ChezScheme/boot/ti3le/*",
-    "ChezScheme/boot/i3osx/*",
-    "ChezScheme/boot/i3nt/*",
-    "ChezScheme/boot/i3le/*",
-    "ChezScheme/boot/arm32le/*",
-]
-
 [lib]
 name = "chez_sys"
 path = "src/lib.rs"
